@@ -133,7 +133,7 @@ print("Estudiantes presentes: ")
 for alumno in listado:
     print(alumno)
 
-opcion = input(" Desea agregar o aliminar un estudiante de la lista? ").lower()
+opcion = input(" Desea agregar o eliminar un estudiante de la lista? ").lower()
 
 if opcion == "agregar":
     nuevo = input("Ingrese el nombre del nuevo alumno: ")
@@ -230,11 +230,11 @@ for i in range(len(temperaturas)):
         mayor_amplitud = amplitud
         dia_mayor_amplitud = dias[i]
 
-promedio_minimas = suma_minimas // len(temperaturas)
-promedio_maximas = suma_maximas // len(temperaturas)
+promedio_minimas = suma_minimas / len(temperaturas)
+promedio_maximas = suma_maximas / len(temperaturas)
 print("========================================")
-print(" Promedio de minimas: ", promedio_minimas)
-print(" Promedio de maximas: ", promedio_maximas)
+print(f" Promedio de minimas: {promedio_minimas:.2f}")
+print(f" Promedio de maximas: {promedio_maximas:.2f}")
 print(" Mayor amplitud termica: ", mayor_amplitud)
 print(" Dia con mayor amplitud: ", dia_mayor_amplitud)
 print("========================================")
@@ -242,7 +242,7 @@ print("========================================")
 
 ### Ejercicio 8 
 print("=====================================")
-print("Ejercicio")
+print("Ejercicio 8")
 print("=====================================")
 
 notas = [
@@ -295,7 +295,9 @@ def mostrar_tablero():
             print(elemento, end= " ")
         print()
 
-for turno in range(9):
+turno = 0
+    ### usamos while para que solo las jugadas validas cuenten como turno.
+while turno < 9:
     if turno % 2 == 0:
         jugador = "X"
     else:
@@ -305,12 +307,20 @@ for turno in range(9):
 
     print("Turno del jugador", jugador)
 
-    fila = int(input("Ingrese la fila del 1 al 3: ")) -1
-    columna = int(input("Ingrese la columna del 1 al 3: ")) -1
+    fila = input("Ingrese la fila del 1 al 3: ")
+    columna = input("Ingrese la columna del 1 al 3: ")
+
+    if not fila.isdigit() or not columna.isdigit():
+        print("Debe ingresar numeros.")
+        continue
+
+    fila = int(fila) - 1
+    columna = int(columna) - 1
        ### le restamos 1 a los valores asi coinciden con la base 0 de las listas.
     if 0 <= fila < 3 and 0 <= columna < 3:
         if tablero[fila][columna] == "-":
             tablero[fila][columna] = jugador
+            turno += 1
 
         else:
             print("La casilla esta ocupada.")
@@ -382,7 +392,7 @@ mayor_producto = max(totales_productos)
 posicion_producto = totales_productos.index(mayor_producto)
 
 print(" Producto mas vendido: ")
-print(productos[posicion_producto], "con", mayor_producto, "unidaedes.")
+print(productos[posicion_producto], "con", mayor_producto, "unidades.")
 
 
 ### Ejercicio 11
@@ -410,7 +420,7 @@ nombre = input("Escriba el nombre que desea buscar en la lista: ").lower()
 if nombre in alumnos:
     posicion = alumnos.index(nombre)
 
-    print("El alumno se encuentra en la lsita. ")
+    print("El alumno se encuentra en la lista. ")
     print(" Posicion:", posicion + 1)
 
 else:

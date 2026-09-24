@@ -196,8 +196,9 @@ while opcion != "5":
         print(" Error: opcion fuera de rango. ")
         opcion = input("Opcion: ")
 
-        while not opcion.isdigit(): 
+        while not opcion.isdigit():
             print(" Error: ingrese un numero valido. ")
+            opcion = input(" Opcion: ")
 
     opcion = int(opcion)
 
@@ -217,7 +218,7 @@ while opcion != "5":
 
         while not paciente.isalpha():
             print("Error: ingrese solo letras. ")
-            pciente = input(" Nombre del paciente: ")
+            paciente = input(" Nombre del paciente: ")
 
     ## reserva lunes
 
@@ -512,7 +513,7 @@ while energia > 0 and tiempo > 0 and cerraduras_abiertas < 3 and not alarma:
 
         else:
             # Riesgo de alarma si la energía estaba por debajo de 40
-            # Se considera la energía antes de realizar el costo.
+            # Se considera la energía después de descontar el costo.
             energia_despues = energia
 
             if energia_despues < 40:
